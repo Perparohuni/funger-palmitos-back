@@ -21,7 +21,7 @@ public class CorsConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        return http.csrf(csrf -> csrf.disable()).sessionManagement(session ->
+        return http.cors(cors -> cors.configurationSource(corsConfigurationSource())).csrf(csrf -> csrf.disable()).sessionManagement(session ->
                         session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)).authorizeHttpRequests(auth -> auth
                         .requestMatchers("/login").permitAll().requestMatchers("/mestre/**").hasAuthority("MESTRE")
                         .anyRequest().authenticated()).addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class).build();
