@@ -18,7 +18,7 @@ public class LoginService {
     private JwtTokenConfig jwtTokenConfig;
 
     public UsuarioDTO login(LoginDTO login) {
-        Usuario usuario = repository.findByLogin(login.getLogin()).orElseThrow(() -> new RPGException("Login ou senha inválidos!"));
+        Usuario usuario = repository.findByLoginAndSenha(login.getLogin(), login.getSenha()).orElseThrow(() -> new RPGException("Login ou senha inválidos!"));
 
         String token = jwtTokenConfig.gerarToken(usuario);
 
