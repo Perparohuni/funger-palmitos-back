@@ -34,9 +34,9 @@ public class JwtFilter extends OncePerRequestFilter {
             try {
                 Claims claim = jwtTokenConfig.validarToken(token);
                 String login = claim.getSubject();
-                boolean mestre = claim.get("mestre", boolean.class);
+                boolean mestre = claim.get("mestre", Boolean.class);
                 UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(login, null,
-                        mestre ? List.of(new SimpleGrantedAuthority("Mestre")): List.of());
+                        mestre ? List.of(new SimpleGrantedAuthority("MESTRE")): List.of());
 
                 SecurityContextHolder.getContext().setAuthentication(authToken);
             } catch (Exception e) {

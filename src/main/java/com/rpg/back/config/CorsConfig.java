@@ -23,7 +23,7 @@ public class CorsConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http.cors(cors -> cors.configurationSource(corsConfigurationSource())).csrf(csrf -> csrf.disable()).sessionManagement(session ->
                         session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)).authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/login").permitAll().requestMatchers("/mestre/**").hasAuthority("MESTRE")
+                        .requestMatchers("/login").permitAll().requestMatchers("/mestrices/**").hasAuthority("MESTRE")
                         .anyRequest().authenticated()).addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class).build();
     }
 

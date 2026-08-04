@@ -1,0 +1,432 @@
+            Aqui eu deixo registrado todos os prompts usados no ChatGPT e em outras IAs para auxiliar no desenvolvimento do meu RPG.
+            As respostas não foram incluídas por ter dados sensíveis.
+
+Obs: '\\' Significa um comentário a parte dos prompts para este arquivo
+
+\\ Mensagens de erro foram resumidas para a parte na qual ocasionou o erro.
+
+1: Salve, estou criando um repositório público no gitHub, como que faço para apenas eu poder edita-lo?
+
+2: vou passar meu RPG para um projeto mais maneiro com angular e spring boot, banco postgres, para migrar do google sheets, passa umas dependencias maneiras para o spring
+
+3: Preciso usar as rotas, preciso saber como usar
+
+4: Calma, rotas no frontEnd, para exibir as páginas
+
+5: Eu preciso que caso uma rota indefinida for acessada, seja redirecionado para uma rota especifica
+
+6: Como criar variaveis em css?
+
+7: Salve, criei uma tela de login, agora eu preciso mandar as informações para o backEnd, como que faço isso?
+
+\\ O banco de dados foi um trampo, ahhhhhhhhh
+
+8: ok, eu preciso agora configurar o banco de dados, as informações dele precisam estar ocultas no código
+
+9: Preciso do docker, estou no windows, qual que é tem arm64 e amd64
+
+10: preciso do docker compose
+
+11: estou usando o java 24
+
+12: O Docker compose, deveria ter as variaveis de ambiente, ou eu incluo ele no gitignore?
+
+13: Verifique se está correto:
+ services:
+    postgres:
+        image: postgres:15
+        container_name: rpg_postgres
+        restart: always
+        environment:
+            POSTGRES_DB: ${DB_NAME}
+            POSTGRES_USER: ${DB_USER}
+            POSTGRES_PASSWORD: ${DB_PASSWORD}
+        ports:
+         - "5432:5432"
+         volumes:
+            - postgres_data:/var/lib/postgresql/data
+    backend: build: .
+    container_name: rpg_backend
+    depends_on: - postgres
+    ports:
+    - "8080:8080"
+    environment:
+        DB_URL: ${DB_URL}
+        DB_USER: ${DB_USER}
+        DB_PASSWORD: ${DB_PASSWORD}
+        volumes:
+       postgres_data:
+
+14: como mudo uma variavel de ambiente e como verifico elas?
+
+15: failed to solve: openjdk:21-jdk-slim: failed to resolve source metadata for docker.io/library/openjdk:21-jdk-slim: docker.io/library/openjdk:21-jdk-slim: not found
+
+16: failed to solve: lstat /target: no such file or directory
+
+17: maven : O termo 'maven' não é reconhecido como nome de cmdlet, função, arquivo de script ou programa operável.
+Verifique a grafia do nome ou, se um caminho tiver sido incluído, veja se o caminho está correto e tente novamente. No linha:1 caractere:1
+
+18: [INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 1.736 s
+[INFO] Finished at: 2026-04-30T21:18:40-03:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.14.1:compile (default-compile) on project back: Fatal error compiling: error: release version 26 not supported -> [Help 1]
+[ERROR]
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR]
+[ERROR] For more information about the errors and possible solutions, please read the foll
+
+19: [INFO] Results:
+[INFO]
+[ERROR] Errors:
+[ERROR] BackApplicationTests.contextLoads » IllegalState Failed to load ApplicationContext for [WebMergedContextConfiguration@28be7fec testClass = com.rpg.back.BackApplicationTests,
+locations = [], classes = [com.rpg.back.Back Application], contextInitializerClasses = [], activeProfiles = [], propertySourceDescriptors = [],
+propertySourceProperties = ["org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true"],
+contextCustomizers = [org.springframework.boot.web.server.context.SpringBootTestRandomPortContextCustomizer@5827af16,
+org.springframework.boot.test.context.PropertyMappingContextCustomizer@0, org.springframework.boot.test.context.filter.ExcludeFilt erContextCustomizer@c260bdc,
+org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@56ace400,
+org.springframework.boot.test.autoconfigure.OnFailureConditionReportConte xtCustomizerFactory$OnFailureConditionReportContextCustomizer@5d018107,
+org.springframework.test.context.support.DynamicPropertiesContextCustomizer@0, org.springframework.boot.webmvc.test.autoconfigure.WebDriverContextCustomizer@7e3060d8,
+org.springframework.boot.test.context.SpringBootTestAnnotation@8a369011], resourceBasePath = "src/main/webapp",
+contextLoader = org.springframework.boot.test.context.SpringBootContextLoader, parent = null] [INFO] [ERROR] Tests run: 1, Failures: 0, Errors: 1, Skipped: 0
+[INFO]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 5.928 s
+[INFO] Finished at: 2026-04-30T21:25:56-03:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.5.5:test (default-test) on project back:
+[ERROR]
+[ERROR] See \\ diretório do RPG // for the individual test results.
+[ERROR] See dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+[ERROR] -> [Help 1] [ERROR] [ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR]
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+
+20: Caused by: jakarta.persistence.PersistenceException: Unable to build Hibernate SessionFactory [persistence unit: default] ;
+nested exception is java.lang.IllegalArgumentException: Unrecognized 'hibernate.hbm2ddl.auto' setting: 'verify'
+
+21: Caused by: jakarta.persistence.PersistenceException: Unable to build Hibernate SessionFactory [persistence unit: default] ;
+nested exception is java.lang.IllegalArgumentException: Unrecognized 'hibernate.hbm2ddl.auto' setting: 'verify'
+
+22: já mudei o verify para validate, mas continua apontando erro
+
+23: docker sossegou agora porém:
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource
+[org/springframework/boot/hibernate/autoconfigure/HibernateJpaConfiguration.class]:
+Failed to initialize dependency 'flyway' of LoadTimeWeaverAware bean 'entityManagerFactory':
+Error creating bean with name 'flyway' defined in class path resource [org/springframework/boot/flyway/autoconfigure/FlywayAutoConfiguration$FlywayConfiguration.class]:
+Failed to instantiate [org.flywaydb.core.Flyway]: Factory method 'flyway' threw exception with message:
+Error creating bean with name 'dataSource' defined in class path resource [org/springframework/boot/jdbc/autoconfigure/DataSourceConfiguration$Hikari.class]:
+Failed to instantiate [com.zaxxer.hikari.HikariDataSource]: Factory method 'dataSource' threw exception with message: 'url' must start with "jdbc"
+
+24: \\ Perguntei se a URL estava correta.
+
+25: spring.datasource.url=${DB_URL}
+spring.datasource.username=${DB_USER}
+spring.datasource.password=${DB_PASSWORD}
+spring.jpa.hibernate.ddl-auto=validate
+
+26: Eu acho que as variaveis do .env, não estão sendo lidas pelo spring
+
+27: \\ Aqui eu mandei o Docker compose com dados senssíveis.
+
+28: Como o spring não lê o .env, como eu faria essa comunicação?
+
+29: E esse comando aqui: spring.config.import=optional:file:.env[.properties]
+
+30: as váriaveis de ambiente precisam ser declaradas na pasta do projeto?
+
+31: o docker está funcionando, mas o spring não consegue ler as váriaves no .env, e não conecta com ele
+
+32: Tem alguma extensão que permite o Spring ler o .env?
+
+33: Estou verificando o docker eu tenho 2 imagens ativas uma com o nome postgres e outra com o nome back-backend, isso é normal?
+
+34: 2026-05-04T18:06:27.509Z WARN 1 ---
+[ main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization -
+cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource
+[org/springframework/boot/hibernate/autoconfigure/HibernateJpaConfiguration.class]: Failed to initialize dependency 'flyway' of LoadTimeWeaverAware bean 'entityManagerFactory':
+Error creating bean with name 'flyway' defined in class path resource [org/springframework/boot/flyway/autoconfigure/FlywayAutoConfiguration$FlywayConfiguration.class]:
+Failed to instantiate [org.flywaydb.core.Flyway]: Factory method 'flyway' threw exception with message: Error creating bean with name 'dataSource' defined in class path resource
+[org/springframework/boot/jdbc/autoconfigure/DataSourceConfiguration$Hikari.class]: Failed to instantiate [com.zaxxer.hikari.HikariDataSource]:
+Factory method 'dataSource' threw exception with message: 'url' must start with "jdbc"
+
+35: Fiz isso agora tem esse erro:
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled. 2026-05-04T15:18:17.083-03:00 ERROR 24656 ---
+[ main] o.s.b.d.LoggingFailureAnalysisReporter :
+***************************
+APPLICATION FAILED TO START
+***************************
+Description:
+Failed to configure a DataSource: 'url' attribute is not specified and no embedded datasource could be configured.
+Reason: Failed to determine a suitable driver class
+Action:
+Consider the following:
+If you want an embedded database (H2, HSQL or Derby), please put it on the classpath.
+If you have database settings to be loaded from a particular profile you may need to activate it (no profiles are currently active).
+Process finished with exit code 1
+
+36: Continua dando errado, vou tentar testar o banco usando o dbeaver
+
+37: Conectou no DBeaver
+
+38: Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled. 2026-05-04T15:36:59.983-03:00 ERROR 24740
+ --- [ main] o.s.b.d.LoggingFailureAnalysisReporter :
+ ***************************
+ APPLICATION FAILED TO START
+ ***************************
+ Description:
+ Web server failed to start. Port 8080 was already in use.
+ Action:
+ Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+ Process finished with exit code 1
+
+ \\ A partir de agora o banco estava funcionando, amém.
+
+39:  Funcionou, o que esses avisos significam?
+2026-05-04T15:40:34.679-03:00 WARN 20520 --- [ main]
+JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering.
+Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-05-04T15:40:35.089-03:00 WARN 20520 --- [ main] .s.a.UserDetailsServiceAutoConfiguration :
+Using generated security password: \\ token apagado // This generated password is for development use only.
+Your security configuration must be updated before running your application in production.
+
+40: Começou a funcionar, agora as requisições foram bloqueadas pelo CORS, como mudo isso?
+
+41: Fiz a config global, mas ainda está dando erro de CORS
+
+42: login:1 Access to XMLHttpRequest at 'http://localhost:8081/login' from origin 'http://localhost:4200' has been blocked by CORS policy:
+Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource.
+
+43: 2026-05-04T16:00:00.842-03:00 ERROR 21684 --- [nio-8081-exec-1] o.a.c.c.C.[.[.[/].[dispatcherServlet] : Servlet.service() for servlet [dispatcherServlet]
+in context with path [] threw exception [No adapter for handler [com.rpg.back.controller.LoginController@4a3333be]:
+The DispatcherServlet configuration needs to include a HandlerAdapter that supports this handler] with root cause jakarta.servlet.ServletException:
+No adapter for handler [com.rpg.back.controller.LoginController@4a3333be]:
+The DispatcherServlet configuration needs to include a HandlerAdapter that supports this handler
+at org.springframework.web.servlet.DispatcherServlet.getHandlerAdapter(DispatcherServlet.java:1193) ~[spring-webmvc-7.0.7.jar:7.0.7]
+
+44: Funcionou, mas agora está dando erro de bad request, meu controller está assim:
+package com.rpg.back.controller;
+import com.rpg.back.dto.LoginDTO;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController @RequestMapping("/login")
+public class LoginController { @PostMapping public void login(@RequestParam String login) {
+    System.out.println(login);
+    }
+}
+
+45: Deu esse erro:
+2026-05-04T16:08:41.449-03:00 WARN 14308 --- [nio-8081-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver :
+Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'login' for method parameter type LoginDTO is not present].
+Meu DTO no front é assim:
+export class LoginDTO { login!: String; senha!: String; }
+
+46: Funcionou, agora temos outro problema, eu pretendo fazer deploy do programa, e deixar as informações do banco no aplication properties não é bom,
+
+\\ Agora vai começar a segunda novela de conexão com banco... AHHHHHH
+
+47: Caused by:
+org.flywaydb.core.internal.exception.sqlExceptions.FlywaySqlUnableToConnectToDbException: Unable to obtain connection from database:
+Connection to localhost:5433 refused. Check that the hostname and port are correct and that the postmaster is accepting TCP/IP connections. rpg_backend
+
+48: \\ Esse é meu docker compose, como ele ficaria com as novas mudanças: \\ Aqui tinha o compose com dados sensíveis
+
+49: Não tem problema vazar essa parte da URL: jdbc:postgresql://postgres:5432/
+
+50: APPLICATION FAILED TO START
+ ***************************
+ Description:
+ Failed to configure a DataSource: 'url' attribute is not specified and no embedded datasource could be configured.
+ Reason: Failed to determine a suitable driver class
+ Action:
+ Consider the following: If you want an embedded database (H2, HSQL or Derby), please put it on the classpath.
+ If you have database settings to be loaded from a particular profile you may need to activate it (no profiles are currently active).
+ Process finished with exit code 1
+
+\\ O Chat aconselhou a colocar todos os dados para acessar o banco no properties...
+ 51: Isso apenas deixou as informações confidenciais harcoded
+
+ \\ Aqui eu tinha desistido do Chat alucinando e fui pesquisar do jeito tradicional, vídeo de áudio estourado de uma criança explicando o conteúdo.
+ 52: Bro... Era possível abrir as váriaveis do .env no local de executar o escript principal, vai abrir uma tela, e tem algumas opções,
+ uma delas é abrir .env para usar variáveis de ambiente, agora está tudo funcionando
+
+ \\ A partir de agora o desenvolvimento começa
+
+ 53: está tudo funcionando, agora eu preciso que as informações do login cheguem até o back e que ele envie uma resposta para o front
+
+ 54: error :
+ SyntaxError: Unexpected token 'S',
+ "Salve mestre" is not valid JSON at JSON.parse (<anonymous>) at XMLHttpRequest.<anonymous>
+ (http://\\Diretorio do projeto//) text :
+ "Salve mestre"
+ [[Prototype]]
+ :
+ Object
+
+ 55: Como ficaria uma resposta boa?
+
+ 56: Ok, agora, eu preciso criar o sistema de tokens, preciso de um passo a passo para isso
+
+ 57: Como faço para navegar para uma nova tela no Angular usando as rotas?
+
+ 58: Eu tenho uma div no html com @if(aviso), porém, para ele aparecer é necessário errar o login 2 vezes, o que pode estar errado? Meu código:
+ import { Component, DestroyRef, inject } from '@angular/core';
+ import { FormsModule } from '@angular/forms';
+ import { ButtonModule } from 'primeng/button';
+ import { FloatLabelModule } from 'primeng/floatlabel';
+ import { InputTextModule } from 'primeng/inputtext';
+ import { LoginService } from '../../services/login.service';
+ import { LoginDTO } from '../../dto/loginDTO';
+ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+ import { Router } from '@angular/router';
+
+ @Component({ selector: 'app-login', imports: [InputTextModule, FloatLabelModule, FormsModule, ButtonModule],
+ templateUrl: './login.html', styleUrl: './login.scss', })
+
+ export class Login {
+    login: string = "";
+    senha: string = "";
+    aviso = false;
+    avisos!: string;
+    private readonly destroyRef = inject(DestroyRef);
+
+    constructor(private loginService: LoginService, private router: Router) {}
+
+    acesso() {
+        if (this.login == "" || this.senha == "") {
+        this.avisos = 'Preenche os campos aí fazendo um favor, tá ok?'; this.aviso = true;
+        }
+        const dto = new LoginDTO();
+        dto.login = this.login;
+        dto.senha = this.senha;
+        this.loginService.login(dto).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+            next: (res) => { localStorage.setItem('token', res.dados); this.router.navigate(['/dashboardMestre']); },
+            error: (err) => { this.avisos = err.error.mensagem; this.aviso = true; console.log(err.error.mensagem); }
+        });
+    }
+ }
+
+ 59: Continua com esse problema, eu clico uma vez, vem a resposta de erro do back, com o console correto, mas não ativa a div, só na segunda tentativa de login
+
+ 60: Agora eu preciso criar a entidade usuário, como faço isso e quais os atributos necessários?
+
+ 61: Agora preciso criar a migration dessa entidade, como faço isso com o Flyway?
+
+ 62: Trabalhando com optionals, como funciona o metodo orElse?
+
+ 63: Optei pelo throw, como faço para passar a mensagem do erro pro front?
+
+ 64: Ok o gerenciamento de erros está funcionando, agora, depois do login correto,
+ que informações eu preciso passar pro front para fazer essas verificações? O token, tipo do perfil etc
+
+ 65: Certo, agora eu preciso validar o token, e as validações de permissão tem que vir do backend, só pegar o localStorage.getItem('isMestre'), não é bom, como que faço isso?
+
+ 66: Eu fiz o role como um boolean, e o nome é mestre
+
+ 67: A questão é que o meu RPG será apenas para mim e meus amigos, criar roles vai ser apenas uma camada extra de complexidade,
+ vou manter o boolean mesmo, como ficaria o código completo do filtro e do jwtService com o valor sendo um boolean? com o b minusculo ainda por cima (se for possível)
+
+ \\ O cara queria que faze injeção de dependência manualmente, que loucura;
+ 68: Essa parte não pode ser substituída com um @Autowired? public JwtFilter(JwtService jwtService) { this.jwtService = jwtService; }
+
+ 69: Ok, agora eu preciso usar este token no front, e envia-lo ao back nas requisições, como ficaria isso?
+
+ 70: Agora está dando erro no CORS, o meu código:
+ package com.rpg.back.config;
+ import com.rpg.back.filter.JwtFilter;
+ import org.springframework.beans.factory.annotation.Autowired;
+ import org.springframework.context.annotation.Bean;
+ import org.springframework.context.annotation.Configuration;
+ import org.springframework.security.config.http.SessionCreationPolicy;
+ import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+ import org.springframework.web.cors.CorsConfiguration;
+ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+ import org.springframework.web.cors.CorsConfigurationSource;
+ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+ import org.springframework.security.web.SecurityFilterChain;
+ import java.util.List;
+
+ @Configuration public class CorsConfig {
+    @Autowired private JwtFilter jwtFilter;
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        return http.csrf(csrf -> csrf.disable()).sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+            .authorizeHttpRequests(auth -> auth.requestMatchers("/login").permitAll().requestMatchers("/mestre/**").hasAuthority("MESTRE").anyRequest().authenticated())
+            .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class).build();
+    }
+    @Bean
+    public CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration config = new CorsConfiguration();
+        config.setAllowedOrigins(List.of("http://localhost:4200"));
+        config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+        config.setAllowedHeaders(List.of("*"));
+        config.setAllowCredentials(true);
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", config); return source;
+    }
+ }
+
+ 71: o login agora está dando erro 401, 401 (Unauthorized)
+
+ 72: No cors o .requestMatchers("/login").permitAll(), não deveria liberar o login?
+
+ 73: Agora eu preciso criar 2 rotas aninhadas, uma para o mestre e outra para os aventureiros, como eu aninho rotas?
+
+ 74: Estou apenas fazendo a parte de mestre agora, o meu app.routes está correto?
+ import { Routes } from '@angular/router';
+ import { Login } from './telas/login/login';
+ import { DashboardMestre } from './telas/dashboard-mestre/dashboard-mestre';
+ import { Campanhas } from './telas/campanhas/campanhas';
+ import { CampanhasList } from './telas/dashboard-mestre/campanhas-list/campanhas-list';
+
+ export const routes: Routes = [
+    {path: 'login', component: Login},
+    {path: 'dashboardMestre', component: DashboardMestre, children: [
+        { path:'campanhasList', component: CampanhasList }
+    ]
+    },
+    {path: 'campanhas', component: Campanhas},
+    {path:'**', redirectTo:'login'}
+    ];
+
+ 75: Como eu usaria o routerOutlet, meu dashboard atualmente é assim:
+ <div class="page-wrapper">
+    <div class="page">
+        <h1 class="titulo">Coisas do mestre</h1>
+        <div class="modulos-list">
+            <a pButton class="modulo" routerLink="campanhasList">Campanhas</a>
+        </div>
+    </div>
+ </div>
+ <router-outlet></router-outlet>
+
+ 76: Criei uma rota pai para melhorar a navegação chamada mestrices, porém quando tendo usar o router link do dashboard, ele retorna pro login:
+ <div class="page-wrapper">
+    <div class="page">
+        <h1 class="titulo">Coisas do mestre</h1>
+        <div class="modulos-list">
+            <a pButton class="modulo" routerLink="campanhasList">Campanhas</a>
+        </div>
+    </div>
+ </div>
+
+ 77: Certo, agora eu preciso mudar a cor de fundo no hover, estou usando o pButton, o a normal está mudando normalmente, mas no hover, ele mantém a cor de fundo padrão,
+ a { background-color: gray; }
+ a :hover { background-color: beige; }
+
+ 78: Certo, agora eu preciso que as rotas sejam protegidas, para não mestres não acessar as telas de mestre
+
+ 79: Certo, agora eu vou para um caminho mais perigoso, eu preciso fazer um componente de listagem genérico, para ser usado em diversos lugares,
+ como que faço um negócio desses? Use componentes do primeNg
+
+ 80: Salve, como funciona o Page, e como enviar itens paginados para o front
