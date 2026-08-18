@@ -1,6 +1,5 @@
 package com.rpg.back.repository;
 
-import com.rpg.back.dto.CampanhaDTO;
 import com.rpg.back.entity.Campanha;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

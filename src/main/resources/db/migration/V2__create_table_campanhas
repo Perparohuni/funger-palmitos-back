@@ -2,4 +2,5 @@ create table campanhas (
 	id bigserial primary key,
 	nome varchar(100) not null,
 	descricao text
+	ativo boolean not null
 );

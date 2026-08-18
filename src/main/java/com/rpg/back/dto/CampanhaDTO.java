@@ -1,6 +1,5 @@
 package com.rpg.back.dto;
 
-import com.rpg.back.entity.Campanha;
 import jakarta.validation.constraints.NotEmpty;
 
 public class CampanhaDTO {
