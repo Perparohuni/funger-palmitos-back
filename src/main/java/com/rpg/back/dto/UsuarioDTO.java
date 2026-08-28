@@ -1,6 +1,6 @@
 package com.rpg.back.dto;
 
-public class UsuarioDTO {
+public class UsuarioDTO extends AbstractDTO {
     private String login;
     private String token;
     private boolean mestre;

@@ -2,10 +2,10 @@ package com.rpg.back.dto;
 
 import jakarta.validation.constraints.NotEmpty;
 
-public class CampanhaDTO {
+public class CampanhaDTO extends AbstractDTO {
     private Long id;
 
-    @NotEmpty
+    @NotEmpty(message = "A campanha precisa ter um nome!")
     private String nome;
 
     private String descricao;

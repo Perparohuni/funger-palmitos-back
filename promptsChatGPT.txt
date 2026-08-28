@@ -430,3 +430,138 @@ Connection to localhost:5433 refused. Check that the hostname and port are corre
  como que faço um negócio desses? Use componentes do primeNg
 
  80: Salve, como funciona o Page, e como enviar itens paginados para o front
+
+ 81: Então, vale mais a pena criar converters (O que eu uso no trabalho) ou criar construtores com com os objetos e dtos? \\ A IA sugeriu os converters
+
+ 82: O que é o mapper? E como ele funciona? \\ É uma dependência do Spring para automatizar esse processo de conversão
+
+ 83: Salve, agora estou tentando usar um endpoint no controller de campanhas, porém está retornando 403 forbidden o que poderia estar causando isso?
+
+ 84: É um endpoint que precisa da permissão, mas no token está enviando corretamente, um código: \\ Enviei o código do JWConfig
+
+ 85: Nesse request matcher: .requestMatchers("/mestrices/**").hasAuthority("MESTRE"), o /mestrices é um dos endpoints do backend ou a rota no front?
+
+ 86: Deu certo, agora ele está chegando no front mas está dando esse erro: ERROR RuntimeError: NG0100: ExpressionChangedAfterItHasBeenCheckedError:
+ Expression has changed after it was checked. Previous value: '[]'. Current value: Aqui tem o item enviado do back.
+
+ 87: \\ A IA pediu enviar o código de list.ts, do erro anterior
+    import { Component, Input, Output, EventEmitter } from '@angular/core';
+    import { TableModule } from 'primeng/table';
+    import { ButtonModule } from 'primeng/button';
+    import { AbstractDTO } from '../../dto/abstractDTO';
+
+    @Component({ selector: 'app-list', standalone: true, imports: [ TableModule, ButtonModule ], templateUrl: './list.html' })
+
+    export class List<T extends AbstractDTO> {
+        @Input() dados: T[] = [];
+        @Input() colunas: any[] = [];
+        @Output() editar = new EventEmitter<any>();
+        @Output() excluir = new EventEmitter<any>();
+    }
+
+    import { Component, Input, Output, EventEmitter } from '@angular/core';
+    import { TableModule } from 'primeng/table';
+    import { ButtonModule } from 'primeng/button';
+    import { AbstractDTO } from '../../dto/abstractDTO';
+
+    @Component({ selector: 'app-list', standalone: true, imports: [ TableModule, ButtonModule ], templateUrl: './list.html' })
+
+    export class List<T extends AbstractDTO> {
+    @Input() dados: T[] = [];
+    @Input() colunas: any[] = [];
+    @Output() editar = new EventEmitter<any>();
+    @Output() excluir = new EventEmitter<any>();
+   }
+   \\ Acabei enviando 2 vezes mesmo
+
+ 88: \\ Continuando esse mesmo problema, agora pediu o código HTML
+    <p-table [value]="dados" [tableStyle]="{'min-width': '50rem'}">
+        <ng-template pTemplate="header">
+            <tr> @for(coluna of colunas; track coluna.field) {
+                <th> {{ coluna.header }} </th> }
+            <th>Ações</th>
+            </tr>
+        </ng-template>
+            <ng-template pTemplate="body" let-linha>
+                <tr> @for(coluna of colunas; track coluna.field) {
+                    @if(coluna.type === "string") {
+                        <td> {{ linha[coluna.field] }} </td> }
+                    @if(coluna.type === "text") {
+                        <td> <textarea style="max-height: 8rem;" [disabled]="true"> {{ linha[coluna.field] }} </textarea> </td>
+                    }
+                }
+                <td>
+                    <p-button icon="pi pi-pencil" (click)="editar.emit(linha)"> </p-button>
+                    <p-button icon="pi pi-trash" severity="danger" (click)="excluir.emit(linha)"> </p-button>
+                </td>
+                </tr>
+        </ng-template>
+   </p-table>
+
+ 89: Estou usando o angular 21, mensagem completa: campanhas-list.ts:23 ERROR RuntimeError: NG0100: ExpressionChangedAfterItHasBeenCheckedError:
+    Expression has changed after it was checked. Previous value: '[]'. Current value: '[{"ativo":true,"descricao":
+    "Um battle royale com um monte de caras, que talvez possam ser perigosos, mas não tenho certeza, com toda a certeza vai ser bem divertido",
+    "id":1,"nome":"Fear & Hunger Termi…'. Expression location: _CampanhasList component. Find more at https://v21.angular.dev/errors/NG0100
+    at CampanhasList_Template (campanhas-list.html:2:5)
+    \\ IA sugeriu chamar o ChangeDetectorRef, e funcionou
+
+ 90: O CDR resolveu, agora, estou tentando aplicar estilos para a table, mas não está funcionando, tentando mudar a cor de fundo do th?
+
+ 91: É no list, tentei os exemplos que me passou e não deu certo, o meu código: \\ Código de list.html
+
+ 92: No F12, no seletor tem a classe header, mas nos styles não aparece, colocar inline style funcionou, meu package.json: \\ Código do package.json
+
+ 93: Certo, agora, fora do assunto, como eu faço para o prettier ativar a cada save?
+
+ 94: Funcionou, valeu
+
+ 95: Agora, como eu uso o prime icons:
+
+ 96: Deu certo, valeu!
+
+ 97: Eu tenho esse trecho da lista:
+    <td class="actions">
+        <p-button icon="pi pi-pencil" (click)="editar.emit(linha)"> </p-button>
+        <p-button icon="pi pi-trash" severity="danger" (click)="excluir.emit(linha)" > </p-button>
+    </td>.
+
+    é de uma p-table, esse td parece estar em display flex, os itens ficam juntos na mesma linha, os botões, mas colocar um gap não funciona,
+    e se colocar o flex também fica estranho, como isso funciona com primeng?
+
+ 98: Usando a div deu certo, valeu!
+
+ 99: Salve, agora eu preciso criar uma tela de formulário, deve ter 2 rotas para ele, uma com novo e outra com o id do item selecionado, como ficaria as rotas?
+
+ 100: Tem como pegar a rota atual?
+
+ 101: Está mudando a rota, mas continua na mesma tela, meu route: \\ Código do routes.ts
+
+ 102: Salve, tentei importar o primeflex, mas aparece esses avisos:
+
+    Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+    More info and automated migrator: https://sass-lang.com/d/import The plugin "angular-sass"
+    was triggered by this import angular:styles/global:styles:3:8: 3 │
+    @import 'node_modules/primeflex/primeflex.scss'; ╵
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ 103: Eu pretendo manter o primeflex pelo grid e col, as versões são: "primeflex": "^4.0.0", "primeicons": "^8.0.0", "primeng": "^21.1.6",
+
+ 104: Como eu faço para atualizar as dependencias do projeto?
+    \\ A IA me xingou por querer atualizar as dependências...
+
+ 105: Em um textArea, é possível remover a possibilidade de mudar o tamanho?
+
+ 106: Salve, como eu faço para pegar um parametro da rota no front? Na tela, quando entra a partir de uma entidade,
+    vai adicionar /idDaEntidade, preciso dele para puxar os dados do banco
+
+ 107: O método save do JPA, serve tanto para criar uma nova entidade como para atualiza-la?
+
+ 108: Salve, agora eu fiz o controller e está tudo funcionando, agora eu quero transformar esse controller em um genérico,
+    que tem todas as funções de CRUD, nisso, ele precisa injetar: service e converter, como ficaria um esboço disso?
+
+ 109: Salve, atualmente, no front, os services tem a url hardcoded, eu estou fazendo um service generico para os métodos CRUD,
+    como eu faço para pegar a url de forma automática sem precisar passar ele hardcoded?
+
+ 110: Como funciona o environment?
+
+ 111:
