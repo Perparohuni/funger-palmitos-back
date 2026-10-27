@@ -3,7 +3,17 @@ package com.rpg.back.dto;
 public class UsuarioDTO extends AbstractDTO {
     private String login;
     private String token;
+    private String senha;
     private boolean mestre;
+
+    @Override
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getLogin() {
         return login;
@@ -27,5 +37,13 @@ public class UsuarioDTO extends AbstractDTO {
 
     public void setMestre(boolean mestre) {
         this.mestre = mestre;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 }
