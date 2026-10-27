@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 
 @Service
-public class CampanhaService extends GenericService<Campanha> {
+public class CampanhaService extends GenericSystemService<Campanha> {
     @Autowired
     CampanhaRepository repository;
 

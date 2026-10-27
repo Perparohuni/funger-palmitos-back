@@ -3,23 +3,13 @@ package com.rpg.back.dto;
 import jakarta.validation.constraints.NotEmpty;
 
 public class CampanhaDTO extends AbstractDTO {
-    private Long id;
-
     @NotEmpty(message = "A campanha precisa ter um nome!")
     private String nome;
-
     private String descricao;
+    private boolean ativo;
+    private SistemaDTO sistema;
 
-    private Boolean ativo;
-
-    public Boolean getAtivo() {
-        return ativo;
-    }
-
-    public void setAtivo(Boolean ativo) {
-        this.ativo = ativo;
-    }
-
+    @Override
     public Long getId() {
         return id;
     }
@@ -42,5 +32,21 @@ public class CampanhaDTO extends AbstractDTO {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    public boolean isAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
+    }
+
+    public SistemaDTO getSistema() {
+        return sistema;
+    }
+
+    public void setSistema(SistemaDTO sistema) {
+        this.sistema = sistema;
     }
 }

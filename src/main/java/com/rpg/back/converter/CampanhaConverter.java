@@ -2,10 +2,14 @@ package com.rpg.back.converter;
 
 import com.rpg.back.dto.CampanhaDTO;
 import com.rpg.back.entity.Campanha;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class CampanhaConverter implements AbstractConverter<Campanha, CampanhaDTO> {
+
+    @Autowired
+    SistemaConverter sistemaConverter;
 
     @Override
     public CampanhaDTO toDto(Campanha model) {
@@ -14,6 +18,7 @@ public class CampanhaConverter implements AbstractConverter<Campanha, CampanhaDT
         dto.setNome(model.getNome());
         dto.setDescricao(model.getDescricao());
         dto.setAtivo(model.getAtivo());
+        dto.setSistema(sistemaConverter.toDto(model.getSistema()));
 
         return dto;
     }
@@ -24,8 +29,8 @@ public class CampanhaConverter implements AbstractConverter<Campanha, CampanhaDT
         model.setId(dto.getId());
         model.setNome(dto.getNome());
         model.setDescricao(dto.getDescricao());
-        model.setAtivo(dto.getAtivo());
-
+        model.setAtivo(dto.isAtivo());
+        model.setSistema(sistemaConverter.toEntity(dto.getSistema()));
         return model;
     }
 }

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/mestrices/campanhas")
-public class CampanhaController extends GenericController<Campanha, CampanhaDTO> {
+public class CampanhaController extends GenericSystemController<Campanha, CampanhaDTO> {
     @Autowired
     CampanhaService service;
 

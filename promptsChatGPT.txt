@@ -564,4 +564,111 @@ Connection to localhost:5433 refused. Check that the hostname and port are corre
 
  110: Como funciona o environment?
 
- 111:
+ 111: Salve, eu estou criando uma classe generica no front para as listagens, mas precisa de uma decoration, qual seria a correta?
+    \\ Prossegue em me dizer que não precisa de decorations...
+
+ 112: Ela não tem html, só lógica, vai ser algo assim: \\ HTML do componente generic-list - continuou insistindo que não precisa de uma decoration
+
+ 113: Está dando esse erro: Class is using Angular features but is not decorated. Please add an explicit Angular decorator \\ Agora aceitou o decorator, @Directive()
+
+ 114: Como fica a rota quando depois de criar um objeto, substituir a rota .../novo para o id do objeto criado? \\ Sugeriu usar o Router.navigate()
+
+ 115: Salve, agora eu preciso de notificações toast, sempre que der um erro no back, enviar essa notificação, ou quando eu precisar avisar que alguma ação aconteceu e tals
+    \\ Confesso que esse código eu só copiei, perdão por ser um péssimo programador...
+
+ 116: Como ficaria o interceptor? \\ O Chat tinha sugerido fazer um interceptor para as notificações... Não foi meu melhor dia.
+
+ 117: Estou com problemas no meu p-checkbox, o valor de linha[coluna.field] está vindo true, mas a checkbox continua desmarcada.
+  <td>
+      <p-check-box
+          [disabled]="false"
+          [value]="linha[coluna.field]"
+          [binary]="true"
+
+      ></p-check-box>
+      <p>{{ linha[coluna.field] }}</p>
+  </td>
+
+ 118: Salve, eu sem querer apaguei a tabela de migrations do flyway, o que faço agora? \\ É... As vezes isso acontece, não me pergunte como isso aconteceu!
+
+ 119: Found non-empty schema(s) "public" but no schema history table. Use baseline() or set baselineOnMigrate to true to initialize the schema history table.
+
+ 120: Apaguei o esquema, como ativo as migrations automaticamente?
+
+ 121: Como que uso o ng-content para inserir componentes em pontos específicos de outros componentes?
+
+ 122: Eu criei o o ng-content para ser um container que recebe vários elementos,
+    mas passar para dentro é necessário usar um outro elemento container o que acaba prejudicando a arquitetura, tem alguma solução para isso? \\ Era o ng-container, foi quase...
+
+ 123: Certo, eu criei um componente errado e depois o apaguei, mas agora está dando esses erros: Unknown reference
+    \\ E segue com uma lista semi-infinita de erros. A IA apontou um componente aleatório que não tinha nada a ver... Mas tudo bem
+
+ 124: No caso não foi o globallWrapper que foi removido, foi sistemas/list, fiz o npm install e o mesmo erro continua, oo GloballWrapper continua no mesmo lugar do projeto
+
+ 125: Descobri, tentei voltar para uma versão anterior do código, e vi que o arquivo tsconfig tinha sido apagado, bem suspeito. \\ Git salvando vidas!
+
+ 126: Certo, agora outra questão, eu preciso que o vscode entenda o angular no html, atualmente apenas faze verificações padrões do html e não dos bindings do angular,
+    estou usando a extensão Angular Language Service , não sei se ela faz algo, ou se preciso de uma outra específica \\ Tava chatão não ter verificaçõess no html com o Angular.
+
+ 127: A extensão está ativa, mas não aparece a opção do html angular, apenas o normal e a versão do django, meu tsConfig: \\ Enviei o conteúdo de tsconfig.ts
+
+ 128: \\ Apenas enviei tsconfig.app.json, o Chat não tinha ideia do que podia estar acontecendo...
+
+ 129: Consegui, tinha aparecido umas classes bootstrap, então apaguei a extensão do bootstrap, agora o angular está funcionando corretamente
+    \\ Nunca gostei do Bootstrap buuuuu!
+
+ 130: Certo, eu estou fazendo uma listagem genérica, mas dessa vez no formato de cards, o primeiro for recebe o item e o segundo estrutura os atributos no card,
+ como que eu pego um atributo do objeto usado no card que pegue o valor que ele tem nesse atributo?
+          @for(card of cards; track card.id) {
+              @for (elemento of elementos; track elemento.field) {
+                  <p-card class="card">
+                      <ng-template #header>
+                          @if(elemento.type === 'título'){
+                              <h1>{{card.[elemento.field]}}</h1>
+                          }
+                      </ng-template>
+                  </p-card>
+              }
+          }
+ 131: Certo, agora tem esse erro: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type 'AbstractDTO'.
+    No index signature with a parameter of type 'string' was found on type 'AbstractDTO'.
+
+ 132: Agora ele está apenas renderizando o primeiro item dos elementos, mesmo tendo vários, o que poderia estar errado?
+          <div>
+              @for (card of cards; track card.id) {
+                  <p-card class="card">
+                      @for (elemento of elementos; track elemento.field) {
+                          <ng-template #header>
+                              @if (elemento.type === 'titulo') {
+                                  <h1>{{ card[elemento.field] }}</h1>
+                                  <div>a</div>
+                              }
+                              <div>{{ card[elemento.field] }}</div>
+                          </ng-template>
+                      }
+                  </p-card>
+              }
+          </div>
+ 133: Como vão ter vários elementos que podem ou não entrar no #header, e ele só renderiza uma vez, me torno rerem de fazer vários for que percorrem os mesmo elementos?
+
+ 134: Certo, vou seguir com os múltiplos for, no fim não tem nenhum benefício muito óbvio, mas dentro do header, eu preciso manter uma ordem, titulo,
+    sub-titulo e extra-titulo devem aparecer nessa ordem, independente da ordem dos elementos, como que faço isso?
+              @for (card of cards; track card.id) {
+                  <p-card class="card">
+                      <ng-template #header class="card-header">
+                          @for (elemento of elementos; track elemento.field) {
+                              @if (elemento.type === 'titulo') {
+                                  <h1>{{ card[elemento.field] }}</h1>
+                              }
+                              @if (elemento.type === 'sub-titulo') {
+                                  <h2>{{ card[elemento.field] }}</h2>
+                              }
+                              @if (elemento.type === 'extra-titulo') {
+                                  <p>{{ card[elemento.field] }}</p>
+                              }
+                          }
+                      </ng-template>
+                  </p-card>
+              }
+
+ 135:

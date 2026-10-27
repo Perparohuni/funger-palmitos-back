@@ -1,0 +1,1 @@
+alter table campanhas rename column id_sistema to sistema_id;

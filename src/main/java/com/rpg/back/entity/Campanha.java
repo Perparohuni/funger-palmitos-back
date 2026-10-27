@@ -12,6 +12,9 @@ public class Campanha extends AbstractEntity {
     private String descricao;
     private Boolean ativo;
 
+    @ManyToOne
+    private Sistema sistema;
+
     public Boolean getAtivo() {
         return ativo;
     }
@@ -42,5 +45,13 @@ public class Campanha extends AbstractEntity {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    public Sistema getSistema() {
+        return sistema;
+    }
+
+    public void setSistema(Sistema sistema) {
+        this.sistema = sistema;
     }
 }
