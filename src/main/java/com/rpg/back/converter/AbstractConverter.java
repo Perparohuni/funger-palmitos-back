@@ -7,4 +7,5 @@ public interface AbstractConverter<Model extends AbstractEntity, DTO extends Abs
     public Model toEntity(DTO dto);
 
     public DTO toDto(Model model);
+
 }
