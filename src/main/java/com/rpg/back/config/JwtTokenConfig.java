@@ -25,6 +25,7 @@ public class JwtTokenConfig {
         return Jwts.builder()
                 .subject(usuario.getLogin())
                 .claim("mestre", usuario.isMestre())
+                .claim("usuarioId", usuario.getId())
                 .issuedAt(new Date())
                 .expiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 *12))
                 .signWith(key, SignatureAlgorithm.HS256)

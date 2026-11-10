@@ -1,9 +1,12 @@
 package com.rpg.back.service;
 
+import com.rpg.back.entity.Campanha;
 import com.rpg.back.entity.UsuarioCampanha;
 import com.rpg.back.repository.UsuarioCampanhaRepository;
 import com.rpg.back.utils.RPGException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -22,5 +25,9 @@ public class UsuarioCampanhaService extends GenericCampanhaService<UsuarioCampan
             throw new RPGException("Usuário já registrado nessa campanha!");
         }
         return super.save(usuarioCampanha);
+    }
+
+    public Page<Campanha> findByUsuarioId(Long usuarioId, Pageable pageable) {
+        return repository.findByUsuario_Id(usuarioId, pageable);
     }
 }
