@@ -1,6 +1,5 @@
 package com.rpg.back.config;
 
-import com.rpg.back.dto.UsuarioDTO;
 import com.rpg.back.entity.Usuario;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

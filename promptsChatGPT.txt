@@ -671,4 +671,188 @@ Connection to localhost:5433 refused. Check that the hostname and port are corre
                   </p-card>
               }
 
- 135:
+ 135: Salve, tem alguma função no angular que seja chamada sempre que trocar de rota? Eu tenho um componente global, que pode ter outros elementos dependendo da rota,
+ como ele só é instanciado uma vez, acaba não sendo atualizado.
+
+ 136: Está chamando a cada navegação, mas não está pegando o id na url, que está como :sistema no routes, meu código:
+          ngOnInit() {
+              this.router.events
+                  .pipe(
+                      filter((event) => event instanceof NavigationEnd),
+                      takeUntilDestroyed(this.destroyRef),
+                  )
+                  .subscribe(() => {
+                      this.atualizarComponente();
+                  });
+          }
+
+          atualizarComponente() {
+              this.sistemaId = this.route.snapshot.paramMap.get('sistema');
+              console.log(this.sistemaId);
+          }
+ 137: Se o valor de sistema, sempre vai estar em um mesmo nível, tem alguma forma de verificar de uma forma mais fácil?
+ \\ Mr. GPT queria usar um for para vasculhar a rota, que absurdo!
+
+ 138: A julgar a hierarquia de rotas que vou te passar, como eu chegaria até o  campanahas list? \\ enviei o arquivo routes.ts
+
+ 139: Estou tentando acessar, mas não aparece nada, a rota que ele tenta acessar é : mestrices/2/campanhasList \\ Esses roteadores... Sempre cheios de problemas.
+
+ 140: O valor do globall wrapper está vindo corretamente, a rota está correta, mas não está sendo renderizado o componente, o que pode estar causando isso?
+
+ 141: Certo, era o outlet, agora eu preciso saber como eu verifico se tem algo depois da variável? Exemplo o
+ list: mestrices/3/campanhasList. Que pode ou não estar depois do id
+
+ 142: Como eu passo um valor booleano para o construtor de uma classe abstrata,minha tentativa:
+        constructor(
+              protected service: GenericService<DTO>,
+              protected cdr: ChangeDetectorRef,
+              protected router: Router,
+              protected route: ActivatedRoute,
+              protected toast: ToastService,
+              protected trazerApenasDoSistema: boolean,
+          ) {
+              trazerApenasDoSistema;
+      }\\ Sem julgamentos aqui! E no final acabei criando um Enum que é injetável, bem mais fácil.
+
+ 143: Salve, uma dúvida sobre o Jpa, seu for fazer a pesquisa automatica por métodos, se eu preciso usar o id de uma entidade de associação, como que fica?
+ Exemplo, a entidade tem um atributo que é outra entidade, mas eu só tenho o ide dessa outra entidade para fazer essa busca.
+
+ 144: Está dando esse erro :Entity attribute is not marked with association annotation, quais seriam as annotatios?
+
+ 145: Qual é ordem dos cardinais? Classe - Associação | Associação - Classe ?
+
+ 146: Quando faz uma associação, a verificação de echema segue o padrão, entidade_id? Estou com esse problema:
+ Schema validation: missing column [sistema_id] in table [campanhas]. mas eu tenho a coluna id_sistema[.
+ \\ Ai ai ai, esse JPA, mó fresco, tem que ter a ordem certa dos elementos
+
+ 147: Como muitas  entidades vão ter essa associação, será que vale a pena alterar o banco, para evitar sempre escrever esse alias?
+ \\ Depois dessa mudei tudo (quase) para seguir a ordem do JPA, campanhas ficou de exemplo, sempre precisa estar no plural, que ódio.
+
+ 148: Agora estou com esse erro: Error creating bean with name 'genericSystemRepository' \\ resto do erro
+
+ 149: A estrutura da rota está assim:
+ [http://localhost:4200/mestrices/1/campanhasList/3](http://localhost:4200/mestrices/1/campanhasList/3),
+ porém, quando eu chamo essa função:
+    goList() {\
+      &#x20;       this.router.navigate(['../'], { relativeTo: this.route });\
+      &#x20;   }.
+ Ele apaga o id do sistema, que é o 1, os 2 pontos não seria voltar um nível na rota atual?
+
+ 150: Agora estou com problema com o componente p-checkbox, o valor dado a ele é true, mas ele aparece desmarcado:
+    <p-check-box
+      [disabled]="true"
+      [binary]="true"
+      [value]="linha[coluna.field]"
+    ></p-check-box>
+
+ 151: Certo, no elemento abaixo no p, ele mostra true, mas não está marcando o checkbox, e se marcar true manualmente, funciona:
+    <td>
+      <p-check-box
+          [disabled]="true"
+          [binary]="true"
+          [ngModel]="linha[coluna.fiel]"
+      ></p-check-box>
+      <p>{{ linha[coluna.field] }}</p>
+    </td>
+ }
+
+ 152: Salve, agora eu preciso que meu componente generico de listas, possa receber uma lista de botões, onde esses itens passam uma função, como que ficaria isso?
+
+ 153: colspan="{{colunas.length+1}}", Can't bind to 'colspan' since it isn't a known property of 'td'. Find more at https://v22.angular.dev/errors/NG8002
+
+ 154: Salve, como eu faço para sobrescrever uma função que recebe a mesma URL no backend mas tem uma assinatura diferente e não dá para usar o override?
+
+ 155: Estou com a seguinte situação, eu estou fazendo um controller para a classe usuarioCampanha, que vai ser os usuários registrados em uma campanha,
+ e eu não sei se é melhor fazer esse controller separado, ou usar o de campanhas, o de usuários não pois esse cadastro é feito na tela de campanhas, o que você acha?
+
+ 156: Considerando que a rota está assim, como eu acesso o campanhaId pelo route?  { path: 'campanhasList/:campanhaId/usuarios', component: CampanhasUsuariosList },
+
+ 157:  Meu código está assim, mas ainda está vindo nulo,
+campanhaId: number;
+     constructor(
+         protected override http: HttpClient,
+         protected route: ActivatedRoute,
+         protected toast: ToastService,
+         protected router: Router,
+     ) {
+         let preCampanhaId = route.snapshot.paramMap.get('campanhaId');
+         // if (!preCampanhaId) {
+         //     toast.erro('Campanha não encontrada');
+         //     router.navigate(['../'], { relativeTo: route });
+         // }
+         console.log(route);
+         console.log(preCampanhaId);
+         super(http, 'campanhas/' + preCampanhaId + '/usuarios');
+         this.campanhaId = 0;
+     }
+ 158: Se eu usar, route.snapshot.paramMap.get('campanhaId'), no componente que chama o service, trás corretamente, mas no service não funciona
+ \\ Maldito seja o roteador, apenas pensamentos ruins em relação a ele.
+
+ 159: Meu componente que chamo esse service, nele está vindo corretamente, \\ Continua com o typescript de campanhaUsuarioList
+
+ 160: Salve, eu estou usando o componente p-autocomplete, e preciso que ele ocupe a tela inteira dentro de um container de col-12,
+  tentei as classes, w-full e p-fluid e não funcionou, como que faço isso?
+  \\ Eu fiquei umas 2 horas fazendo gambiarras no CSS até descobrir que tinha o atributo fluid nele...
+
+ 161: Certo, agora eu tenho uma função para carregar os dados desse selector, mas depois de olhar e clicar de novo nele, os itens se perde, o que pode ter acontecido?
+
+ 162: Continua, função que é chamada no onInit:
+  carregarUsuarios() {
+      this.usuarioService
+          .getAll()
+          .pipe(takeUntilDestroyed(this.destroyRef))
+          .subscribe({
+              next: (usuarios) => {
+                  this.usuarios = usuarios.content;
+              },
+          });
+  }.
+  Autocomplete:
+  <p-autocomplete
+      [fluid]="true"
+      [dropdown]="true"
+      [(ngModel)]="dto.usuario"
+      [suggestions]="usuarios"
+      [optionLabel]="'login'"
+      placeholder="Digite o nome de um usuário"
+      [completeOnFocus]="true"
+      [dropdownMode]="'blank'"
+  ></p-autocomplete>
+
+ 163: Agora eu preciso que a lista consiga exibir dados aninhados dentro de objetos pelo [field], 'objeto.field', como ficaria?
+
+ 164: Salve, na lista de cards, ela tem a propriedade field que é um keyof de T, mas dessa forma eu não consigo usar um atributo de propriedades aninhadas,
+ como eu resolvo isso?
+
+ 165: Você acredita que usar o keyof é a melhor alternativa? \\ Perguntar a opinião da mente coletiva da internet é sempre importante
+
+ 166: Explique como o código do nestedkeyof funciona \\ Mó complexo esse bixo
+
+ 167: Estou com uma situação, eu tenho urls diferentes no back para mestre e aventureiro, mas preciso usar um mesmo service, que por sua vez define a rota no constructor,
+ como eu faço para diferenciar qual endpoint usar?
+
+ 168: Me explique o que esse código faz:
+  ehMestre(): boolean {
+     const token = localStorage.getItem('token');
+     if (!token) {
+         return false;
+     }
+     const payload = JSON.parse(atob(token.split('.')[1]));
+     if (payload.mestre === true) {
+         return true;
+     } else {
+         return false;
+     }
+ } \\ Básicamente era sobre o atob, token JWT é perigoso meu.
+
+ 169: pelo JPA, é possível fazer um select em um atributo da entidade?
+
+ 170: O pageable funciona normalmente quando se usa o "@Query"?
+
+ 171: Eu criei uma classe UsuarioUtils, para adquirir informações do usuário, porém ela carrega apenas uma vez, mesmo que seja chamada em por services diferentes,
+ então o toke, é sempre o mesmo de quando ela é carregada pela primeira vez, como posso resolver isso? \\ Continua com o componente UsuarioUtils
+
+ 172: Funcionou, agora, o problema passou para o GenericService, que as vezes funciona quando faço o logout, porém muitas vezes não chama o construtor,
+ e meio que fica "salvo" alguns valores, o que pode estar causando isso? \\ Segue o componente genericService
+
+ 173:
