@@ -6,8 +6,6 @@ import com.rpg.back.utils.RPGException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Objects;
-
 @Service
 public class AtributoService extends GenericSystemService<Atributo>{
     @Autowired
