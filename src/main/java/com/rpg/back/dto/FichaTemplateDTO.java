@@ -1,9 +1,14 @@
 package com.rpg.back.dto;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class FichaTemplateDTO extends AbstractDTO {
     private SistemaDTO sistema;
     private String nome;
     private boolean ativo;
+
+    private List<FichaElementoDTO> elementos = new ArrayList<>();
 
     @Override
     public Long getId() {
@@ -36,5 +41,13 @@ public class FichaTemplateDTO extends AbstractDTO {
 
     public void setAtivo(boolean ativo) {
         this.ativo = ativo;
+    }
+
+    public List<FichaElementoDTO> getElementos() {
+        return elementos;
+    }
+
+    public void setElementos(List<FichaElementoDTO> elementos) {
+        this.elementos = elementos;
     }
 }
