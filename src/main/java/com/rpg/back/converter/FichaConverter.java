@@ -14,41 +14,31 @@ public class FichaConverter implements AbstractConverter<Ficha, FichaDTO> {
     @Autowired
     FichaTemplateConverter fichaTemplateConverter;
     @Autowired
-    FichaElementoConverter fichaElementoConverter;
-    @Autowired
     UsuarioConverter usuarioConverter;
 
     @Override
     public FichaDTO toDto(Ficha model) {
+        if (model == null) return null;
         FichaDTO dto = new FichaDTO();
         dto.setId(model.getId());
         dto.setNome(model.getNome());
         dto.setAtivo(model.isAtivo());
         dto.setFichaTemplate(fichaTemplateConverter.toDto(model.getFichaTemplate()));
         dto.setUsuario(usuarioConverter.toDto(model.getUsuario()));
-        dto.setElementos(elementosToDTO(model.getElementos()));
 
         return dto;
     }
 
     @Override
     public Ficha toEntity(FichaDTO dto) {
+        if (dto == null) return null;
         Ficha model = new Ficha();
         model.setId(dto.getId());
         model.setNome(dto.getNome());
         model.setAtivo(dto.isAtivo());
         model.setFichaTemplate(fichaTemplateConverter.toEntity(dto.getFichaTemplate()));
         model.setUsuario(usuarioConverter.toEntity(dto.getUsuario()));
-        model.setElementos(elementosToEntity(dto.getElementos()));
 
         return model;
-    }
-
-    private List<FichaElementoDTO> elementosToDTO(List<FichaElemento> entities) {
-        return entities.stream().map(model -> fichaElementoConverter.toDto(model)).toList();
-    }
-
-    private List<FichaElemento> elementosToEntity(List<FichaElementoDTO> dtos) {
-        return dtos.stream().map(dto -> fichaElementoConverter.toEntity(dto)).toList();
     }
 }

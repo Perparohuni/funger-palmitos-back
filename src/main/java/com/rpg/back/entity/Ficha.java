@@ -21,9 +21,6 @@ public class Ficha extends AbstractEntity {
     private String nome;
     private boolean ativo;
 
-    @OneToMany(mappedBy = "ficha", cascade = CascadeType.ALL)
-    private List<FichaElemento> elementos = new ArrayList<>();
-
     @Override
     public Long getId() {
         return id;
@@ -63,13 +60,5 @@ public class Ficha extends AbstractEntity {
 
     public void setAtivo(boolean ativo) {
         this.ativo = ativo;
-    }
-
-    public List<FichaElemento> getElementos() {
-        return elementos;
-    }
-
-    public void setElementos(List<FichaElemento> elementos) {
-        this.elementos = elementos;
     }
 }

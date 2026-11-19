@@ -13,38 +13,28 @@ import java.util.List;
 public class FichaTemplateConverter implements AbstractConverter<FichaTemplate, FichaTemplateDTO>{
     @Autowired
     SistemaConverter sistemaConverter;
-    @Autowired
-    FichaElementoConverter fichaElementoConverter;
 
     @Override
     public FichaTemplateDTO toDto(FichaTemplate model) {
+        if (model == null) return null;
         FichaTemplateDTO dto = new FichaTemplateDTO();
         dto.setId(model.getId());
         dto.setNome(model.getNome());
         dto.setAtivo(model.isAtivo());
         dto.setSistema(sistemaConverter.toDto(model.getSistema()));
-        dto.setElementos(elementosToDTO(model.getElementos()));
 
         return dto;
     }
 
     @Override
     public FichaTemplate toEntity(FichaTemplateDTO dto) {
+        if (dto == null) return null;
         FichaTemplate model = new FichaTemplate();
         model.setId(dto.getId());
         model.setNome(dto.getNome());
         model.setAtivo(dto.isAtivo());
         model.setSistema(sistemaConverter.toEntity(dto.getSistema()));
-        model.setElementos(elementosToEntity(dto.getElementos()));
 
         return model;
-    }
-
-    private List<FichaElementoDTO> elementosToDTO(List<FichaElemento> entities) {
-        return entities.stream().map(model -> fichaElementoConverter.toDto(model)).toList();
-    }
-
-    private List<FichaElemento> elementosToEntity(List<FichaElementoDTO> dtos) {
-        return dtos.stream().map(dto -> fichaElementoConverter.toEntity(dto)).toList();
     }
 }

@@ -3,21 +3,19 @@ package com.rpg.back.converter;
 import com.rpg.back.dto.FichaElementoDTO;
 import com.rpg.back.entity.FichaElemento;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 @Component
 public class FichaElementoConverter implements AbstractConverter<FichaElemento, FichaElementoDTO> {
-    @Lazy
     @Autowired
     FichaTemplateConverter fichaTemplateConverter;
 
-    @Lazy
     @Autowired
     FichaConverter fichaConverter;
 
     @Override
     public FichaElementoDTO toDto(FichaElemento model) {
+        if (model == null) return null;
         FichaElementoDTO dto = new FichaElementoDTO();
         dto.setId(model.getId());
         dto.setPosX(model.getPosX());
@@ -33,8 +31,10 @@ public class FichaElementoConverter implements AbstractConverter<FichaElemento, 
         return dto;
     }
 
+
     @Override
     public FichaElemento toEntity(FichaElementoDTO dto) {
+        if (dto == null) return null;
         FichaElemento model = new FichaElemento();
         model.setId(dto.getId());
         model.setPosX(dto.getPosX());
